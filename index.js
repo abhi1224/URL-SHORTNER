@@ -15,6 +15,22 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use('/url', urlRoute);
 
+// Server side rendering 
+app.get('/test', async (req, res) => {
+    const allUrls = await URL.find({});
+    
+    return res.end(
+        `<html>
+        <head></head>
+        <body>
+            <ol>
+                ${allUrls.map((url) => `<li>${url.shortId} - ${url.redirectURL} - ${url.visitHistory.length}</li>`)}
+            </ol>
+        </body>
+        </html>`
+    )
+})
+
 app.get('/:shortId', async (req, res) => {
     const shortId = req.params.shortId;
     const entry = await URL
