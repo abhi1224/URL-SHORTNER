@@ -52,7 +52,6 @@ URL-SHORTNER/
 1. **Clone the repository**
    ```bash
    git clone https://github.com/abhi1224/URL-SHORTNER.git
-   cd short-url
 
 2. **Install dependencies**
     ```bash
